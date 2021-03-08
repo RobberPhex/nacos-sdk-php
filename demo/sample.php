@@ -4,15 +4,23 @@
  * All rights reserved
  */
 
-require_once realpath(dirname(__FILE__) . '/../Aliyun/ACM/Autoload.php');;
+use Aliyun\Nacos\Config\ConfigClient;
+use Aliyun\Nacos\Util;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
-$client = new Aliyun_ACM_Client('acm.aliyun.com','8080');
-$resp = $client->getServerList();
+require __DIR__ . '/../vendor/autoload.php';
+
+$log = new Logger('name');
+$log->pushHandler(new StreamHandler('php://stdout', Logger::INFO)); // <<< uses a stream
+
+$client = new ConfigClient('acm.aliyun.com','namespace',8080);
+$client->setLogger($log);
 $client->refreshServerList();
+$resp = $client->getServerList();
 
-$client->setNameSpace('namespace');
-$client->setAccessKey('accesskey');
-$client->setSecretKey('secretkey');
+$client->setAccessKey('accessKey');
+$client->setSecretKey('secretKey');
 $client->setAppName("appname");
 
 echo $client->getConfig('test.test',null)."\n";
@@ -24,11 +32,6 @@ $client->publishConfig('test'.$ts,null,"{\"test\":\"asdfasdfasdf\"}")."\n";
 
 $client->removeConfig('test.test',null);
 
-var_dump(array_values($client->getServerList())[0]);
+echo strval(Util::isValid('data_id'));
 
-echo "hello world";
-
-echo strval(Aliyun_ACM_Util::isValid('data_id'));
-
-echo strval(Aliyun_ACM_Util::isValid('data*id'));
-
+echo strval(Util::isValid('data*id'));

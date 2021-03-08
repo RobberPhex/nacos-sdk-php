@@ -1,0 +1,25 @@
+{
+    "name": "nacos/nacos",
+    "type": "library",
+    "description": "PHP Nacos client",
+    "authors": [
+        {
+            "name": "luyanbo",
+            "email": "robert.lyb@alibaba-inc.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "alibabacloud/sdk": "^1.8",
+        "ext-curl": "*",
+        "psr/log": "^1.1"
+    },
+    "require-dev": {
+        "monolog/monolog": "^2.2"
+    }
+}

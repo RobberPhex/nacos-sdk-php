@@ -4,8 +4,9 @@
  * All rights reserved
  */
 
+namespace Aliyun\Nacos\Model;
 
-class Aliyun_ACM_Exception extends Exception
+class NacosException extends \Exception
 {
     /**
      * @var string
@@ -13,7 +14,7 @@ class Aliyun_ACM_Exception extends Exception
     private $requestId;
 
     /**
-     * Aliyun_ACM_Exception constructor
+     * NacosException constructor
      *
      * @param string $code
      *            log service error code.
@@ -36,25 +37,28 @@ class Aliyun_ACM_Exception extends Exception
      *
      * @return string
      */
-    public function __toString() {
-        return "Aliyun_ACM_Exception: \n{\n    ErrorCode: $this->code,\n    ErrorMessage: $this->message\n    RequestId: $this->requestId\n}\n";
+    public function __toString()
+    {
+        return "NacosException:{ErrorCode: $this->code,ErrorMessage: $this->message,RequestId: $this->requestId}";
     }
 
     /**
-     * Get Aliyun_ACM_Exception error code.
+     * Get NacosException error code.
      *
      * @return string
      */
-    public function getErrorCode() {
+    public function getErrorCode()
+    {
         return $this->code;
     }
 
     /**
-     * Get Aliyun_ACM_Exception error message.
+     * Get NacosException error message.
      *
      * @return string
      */
-    public function getErrorMessage() {
+    public function getErrorMessage()
+    {
         return $this->message;
     }
 
@@ -63,7 +67,8 @@ class Aliyun_ACM_Exception extends Exception
      *
      * @return string
      */
-    public function getRequestId() {
+    public function getRequestId()
+    {
         return $this->requestId;
     }
 }

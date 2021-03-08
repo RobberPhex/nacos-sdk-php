@@ -4,11 +4,15 @@
  * All rights reserved
  */
 
+namespace Aliyun\Nacos\Model;
+
 /**
- * Class Aliyun_ACM_Model_Server
- * the instance of ACM server
+ * Class NacosServer
+ *
+ * the instance of Nacos server
  */
-class Aliyun_ACM_Model_Server{
+class NacosServer
+{
 
     public $url;
 

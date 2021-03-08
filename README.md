@@ -1,31 +1,25 @@
 # User Guide
 ## Introduction
 
-PHP SDK for ACM.
+PHP SDK for Nacos.
 
 ### Features
-1. Get/Publish/Remove config from ACM server use REST API.
+1. Get/Publish/Remove config from Nacos server use REST API.
 2. Local config cache supported.
 3. Server failure failover.
 4. TLS supported.
 5. Address server supported.
-6. Both Alibaba Cloud ACM and Stand-alone deployment supported.
+6. Both Alibaba Cloud MSE and Stand-alone Nacos deployment supported.
 
-### Supported PHP：
+### Supported PHP version
 
 1. PHP 7.2 +
 
-### Supported ACM version
-1. ACM 1.0
-
-### Change Logs
-- get server list from ACM
-    - refresh manually(Client->refreshServerList)
-- get config data from ACM
-    - no lisener, update manually(Client->getData)
+### Supported Nacos version
+1. Nacos 1.2.0+
 
 ## Installation
-- add the php libary to your project
+- add the php library to your project
 
 ## Getting Started
 - please check the sample.php
@@ -42,8 +36,8 @@ TODO
 Get value of one config item following priority:
 
 * Step 1 - Get from local cache with timestamp, if the cache value was expired, get from following sources and update local cache.
-* Step 2 - Get from local failover dir(default: `${cwd}/acm/data`).
-  * Failover dir can be manually copied from snapshot dir(default: `${cwd}/acm/snapshot`) in advance.
+* Step 2 - Get from local failover dir(default: `${cwd}/nacos/data`).
+  * Failover dir can be manually copied from snapshot dir(default: `${cwd}/nacos/snapshot`) in advance.
   * This helps to suppress the effect of known server failure.
 * Step 3 - Get from one server until value is got or all servers tried.
   * Content will be save to snapshot dir after got from server.
@@ -55,15 +49,14 @@ Get all config items of current namespace, with dataId and group information onl
 * Warning: If there are lots of config in namespace, this function may cost some time.
 
 ### Publish Config
-Publish one data item to ACM.
+Publish one data item to Nacos.
 * If the data key is not exist, create one first.
 * If the data key is exist, update to the content specified.
 * Content can not be set to None, if there is need to delete config item, use function __remove__ instead.
 
 ### Remove Config
-Remove one data item from ACM.
+Remove one data item from Nacos.
 
 ## Other Resources
 
-* Alibaba Cloud ACM homepage: [https://www.aliyun.com/product/acm](https://www.aliyun.com/product/acm)
-
+* Alibaba Cloud MSE homepage: <https://www.aliyun.com/product/mse>
